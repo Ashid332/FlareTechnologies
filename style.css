@@ -381,74 +381,193 @@ p {
 }
 
 
-/* --- CAPABILITIES GRID --- */
-.services-section {
-    background-color: var(--bg-secondary);
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-}
-
-.service-card {
+/* --- THE FLARE SYSTEM (PHILOSOPHY) --- */
+.philosophy-section {
     background-color: var(--bg-base);
-    border: 1px solid var(--border-subtle);
-    border-radius: 8px;
-    padding: 2.5rem 2rem;
+    position: relative;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+/* --- PLATFORM ECOSYSTEM --- */
+.ecosystem-section {
+    background-color: var(--bg-secondary);
     position: relative;
     overflow: hidden;
-    transition: all 0.4s var(--easing-premium);
 }
 
-.service-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+.platform-map {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    height: 600px;
+    margin: 4rem auto 0;
 }
 
-.card-glow {
+.eco-connections {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 4px;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.flow-anim {
+    stroke-dasharray: 4 4;
+    animation: flow 20s linear infinite;
+}
+
+@keyframes flow {
+    to {
+        stroke-dashoffset: -100;
+    }
+}
+
+.map-node {
+    position: absolute;
+    z-index: 2;
+    background: rgba(11, 15, 25, 0.85);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.4s var(--easing-premium);
+}
+
+.eco-module {
+    width: 280px;
+}
+
+.eco-module:hover {
+    transform: translate(-50%, -55%) !important;
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+.eco-glow-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
     background: var(--infinity-gradient);
     opacity: 0;
+    z-index: -1;
     transition: opacity 0.4s;
+    filter: blur(8px);
+    margin: -1px;
+    padding: 1px;
 }
 
-.service-card:hover .card-glow {
-    opacity: 1;
+.eco-module:hover .eco-glow-border {
+    opacity: 0.6;
 }
 
-.icon-wrapper {
-    width: 40px;
-    height: 40px;
-    color: var(--text-secondary);
+.eco-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 1rem;
+}
+
+.module-icon {
+    width: 32px;
+    height: 32px;
+    color: var(--text-secondary);
     transition: color 0.3s;
 }
 
-.service-card:hover .icon-wrapper {
+.eco-module:hover .module-icon {
     color: #FFF;
-    /* Gradient not applied to raw SVG fill cleanly without definitions, so pure white on hover is clean */
 }
 
-.icon-wrapper svg {
+.eco-header h4 {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.eco-services {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.eco-services li {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    position: relative;
+    padding-left: 1.25rem;
+}
+
+.eco-services li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--border-subtle);
+    transition: background 0.3s;
+}
+
+.eco-module:hover .eco-services li::before {
+    background: var(--infinity-gradient);
+    background-clip: padding-box;
+}
+
+.eco-core {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--bg-base);
+    border: 2px solid rgba(138, 43, 226, 0.4);
+    box-shadow: 0 0 30px rgba(138, 43, 226, 0.2), inset 0 0 20px rgba(138, 43, 226, 0.1);
+}
+
+.eco-core h4 {
+    font-size: 1.1rem;
+    margin: 0;
+    background: var(--infinity-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.core-pulse-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
     height: 100%;
+    border-radius: 50%;
+    border: 1px solid rgba(138, 43, 226, 0.6);
+    animation: corePulse 3s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+    pointer-events: none;
 }
 
-.service-card h4 {
-    font-size: 1.125rem;
-    margin-bottom: 0.75rem;
-}
+@keyframes corePulse {
+    0% {
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+    }
 
-.service-card p {
-    font-size: 0.95rem;
-    line-height: 1.6;
+    100% {
+        width: 200%;
+        height: 200%;
+        opacity: 0;
+    }
 }
 
 
@@ -962,8 +1081,34 @@ p {
         justify-content: center;
     }
 
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .platform-map {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .eco-connections {
+        display: none;
+    }
+
+    .map-node {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        max-width: 400px;
+    }
+
+    .eco-module:hover {
+        transform: translateY(-5px) !important;
+    }
+
+    .eco-core {
+        order: -1;
+        margin-bottom: 2rem;
     }
 
     .stack-layout {
@@ -1007,9 +1152,7 @@ p {
         flex-direction: column;
     }
 
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
+    /* Removed services-grid */
 
     .features-grid {
         grid-template-columns: 1fr;

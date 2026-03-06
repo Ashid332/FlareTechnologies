@@ -128,148 +128,128 @@
             </div>
         </section>
 
-        <!-- Solutions Section -->
-        <section id="services" class="services-section section-padding">
+        <!-- The Flare System Philosophy Section -->
+        <section id="philosophy" class="philosophy-section section-padding">
+            <div class="container text-center scroll-anim slide-up">
+                <h2 class="section-badge">The Flare System</h2>
+                <h3 class="section-title">Beyond Isolated Services</h3>
+                <p class="section-desc mx-auto" style="max-width: 800px;">
+                    Traditional models offer fragmented solutions. Modern growth requires a unified engine. We
+                    engineered the Flare System to synchronize artificial intelligence, high-performance infrastructure,
+                    and creative execution into a single, interconnected platform that scales autonomously.
+                </p>
+            </div>
+        </section>
+
+        <!-- Platform Ecosystem Section -->
+        <section id="services" class="ecosystem-section section-padding">
             <div class="container">
                 <div class="section-header text-center scroll-anim slide-up">
-                    <h2 class="section-badge">Capabilities</h2>
-                    <h3 class="section-title">Our Integrated Solutions</h3>
-                    <p class="section-desc mx-auto">Flare Technologies provides a complete ecosystem of digital, AI, and
-                        engineering solutions designed to help businesses grow faster and operate smarter.</p>
+                    <h2 class="section-badge">Platform</h2>
+                    <h3 class="section-title">AI-Powered Business Systems</h3>
+                    <p class="section-desc mx-auto">Flare Technologies integrates AI automation, marketing, engineering,
+                        and creative production into one intelligent ecosystem designed to help businesses build faster,
+                        operate smarter, and scale efficiently.</p>
                 </div>
 
-                <!-- 3-Column Desktop Grid for 9 Cards -->
-                <div class="services-grid">
-                    <!-- Row 1 -->
-                    <div class="service-card scroll-anim scale-up delay-1">
-                        <div class="card-glow"></div>
-                        <div class="icon-wrapper">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <div class="platform-map scroll-anim fade-in delay-2">
+                    <svg class="eco-connections" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <defs>
+                            <linearGradient id="eco-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#FF3D3D" />
+                                <stop offset="50%" stop-color="#00D4FF" />
+                                <stop offset="100%" stop-color="#8A2BE2" />
+                            </linearGradient>
+                            <filter id="glow-line" x="-20%" y="-20%" width="140%" height="140%">
+                                <feGaussianBlur stdDeviation="1" result="blur" />
+                                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                            </filter>
+                        </defs>
+                        <!-- 
+                            Core is at 50,40
+                            AI is at 22,25
+                            Growth is at 78,25
+                            Content is at 50,80
+                        -->
+                        <line x1="50" y1="40" x2="22" y2="25" stroke="url(#eco-grad)" stroke-width="0.3"
+                            filter="url(#glow-line)" class="flow-anim" />
+                        <line x1="50" y1="40" x2="78" y2="25" stroke="url(#eco-grad)" stroke-width="0.3"
+                            filter="url(#glow-line)" class="flow-anim" />
+                        <line x1="50" y1="40" x2="50" y2="80" stroke="url(#eco-grad)" stroke-width="0.3"
+                            filter="url(#glow-line)" class="flow-anim" />
+                    </svg>
+
+                    <!-- Modules use absolute positioning matching SVG lines -->
+
+                    <div class="map-node eco-module" style="left: 22%; top: 25%; transform: translate(-50%, -50%);">
+                        <div class="eco-glow-border"></div>
+                        <div class="eco-header">
+                            <svg class="module-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M3 12h5"></path>
+                                <path d="M16 12h5"></path>
+                                <path d="M12 3v5"></path>
+                                <path d="M12 16v5"></path>
+                                <path d="m5.636 5.636 3.536 3.536"></path>
+                                <path d="m18.364 5.636-3.536 3.536"></path>
+                            </svg>
+                            <h4>AI & Automation Systems</h4>
+                        </div>
+                        <ul class="eco-services">
+                            <li>AI Automation</li>
+                            <li>Seamless Cloud Migration</li>
+                            <li>Custom Logistics Management System</li>
+                        </ul>
+                    </div>
+
+                    <div class="map-node eco-core" style="left: 50%; top: 40%; transform: translate(-50%, -50%);">
+                        <div class="core-pulse-ring"></div>
+                        <span class="logo-infinity-dot"
+                            style="width: 14px; height: 14px; margin-bottom: 0.5rem; display: inline-block;"></span>
+                        <h4>Flare AI Core</h4>
+                    </div>
+
+                    <div class="map-node eco-module" style="left: 78%; top: 25%; transform: translate(-50%, -50%);">
+                        <div class="eco-glow-border"></div>
+                        <div class="eco-header">
+                            <svg class="module-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path
-                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
-                                </path>
-                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                            </svg>
-                        </div>
-                        <h4>Digital Marketing</h4>
-                        <p>Data-driven marketing strategies that help brands reach the right audience and increase
-                            customer acquisition.</p>
-                    </div>
-
-                    <div class="service-card scroll-anim scale-up delay-2">
-                        <div class="card-glow"></div>
-                        <div class="icon-wrapper">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <polygon points="23 7 16 12 23 17 23 7"></polygon>
-                                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-                            </svg>
-                        </div>
-                        <h4>Video Production</h4>
-                        <p>Professional video content designed to strengthen brand storytelling, marketing campaigns,
-                            and product launches.</p>
-                    </div>
-
-                    <div class="service-card scroll-anim scale-up delay-3">
-                        <div class="card-glow"></div>
-                        <div class="icon-wrapper">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
                                 <path
-                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
-                                </path>
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                    d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+                                <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+                                <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
                             </svg>
+                            <h4>Growth & Marketing Systems</h4>
                         </div>
-                        <h4>AI Automation</h4>
-                        <p>Intelligent automation systems that streamline workflows, customer interactions, and internal
-                            operations.</p>
+                        <ul class="eco-services">
+                            <li>Digital Marketing</li>
+                            <li>Influencer-Led Product Launch</li>
+                            <li>E-commerce Growth Accelerator</li>
+                        </ul>
                     </div>
 
-                    <!-- Row 2 -->
-                    <div class="service-card scroll-anim scale-up delay-4">
-                        <div class="card-glow"></div>
-                        <div class="icon-wrapper">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-                                <line x1="3" y1="6" x2="21" y2="6"></line>
-                                <path d="M16 10a4 4 0 0 1-8 0"></path>
-                            </svg>
-                        </div>
-                        <h4>E-commerce Growth</h4>
-                        <p>Strategies and technology solutions that help online stores scale faster and increase
-                            revenue.</p>
-                    </div>
-
-                    <div class="service-card scroll-anim scale-up delay-5">
-                        <div class="card-glow"></div>
-                        <div class="icon-wrapper">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
-                            </svg>
-                        </div>
-                        <h4>Seamless Cloud Migration</h4>
-                        <p>Move your infrastructure to modern cloud platforms with minimal disruption and improved
-                            performance.</p>
-                    </div>
-
-                    <div class="service-card scroll-anim scale-up delay-6">
-                        <div class="card-glow"></div>
-                        <div class="icon-wrapper">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <div class="map-node eco-module" style="left: 50%; top: 80%; transform: translate(-50%, -50%);">
+                        <div class="eco-glow-border"></div>
+                        <div class="eco-header">
+                            <svg class="module-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path
-                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
+                                    d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z">
                                 </path>
+                                <circle cx="12" cy="13" r="3"></circle>
                             </svg>
+                            <h4>Content & Product Execution</h4>
                         </div>
-                        <h4>Influencer Product Launch</h4>
-                        <p>Strategic influencer campaigns designed to build awareness and accelerate product adoption.
-                        </p>
+                        <ul class="eco-services">
+                            <li>Video Production</li>
+                            <li>Brand Identity & Digital Revamp</li>
+                            <li>Agile Development Team Augmentation</li>
+                        </ul>
                     </div>
 
-                    <!-- Row 3 -->
-                    <div class="service-card scroll-anim scale-up delay-1">
-                        <div class="card-glow"></div>
-                        <div class="icon-wrapper">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="9" cy="7" r="4"></circle>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                            </svg>
-                        </div>
-                        <h4>Agile Team Augmentation</h4>
-                        <p>Access experienced engineers and developers who integrate directly with your team to
-                            accelerate development.</p>
-                    </div>
-
-                    <div class="service-card scroll-anim scale-up delay-2">
-                        <div class="card-glow"></div>
-                        <div class="icon-wrapper">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M12 20h9"></path>
-                                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
-                            </svg>
-                        </div>
-                        <h4>Brand Identity & Digital Revamp</h4>
-                        <p>Complete brand redesign and digital presence upgrades to strengthen your market positioning.
-                        </p>
-                    </div>
-
-                    <div class="service-card scroll-anim scale-up delay-3">
-                        <div class="card-glow"></div>
-                        <div class="icon-wrapper">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <rect x="1" y="3" width="15" height="13"></rect>
-                                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
-                                <circle cx="5.5" cy="18.5" r="2.5"></circle>
-                                <circle cx="18.5" cy="18.5" r="2.5"></circle>
-                            </svg>
-                        </div>
-                        <h4>Custom Logistics Software</h4>
-                        <p>Tailored logistics and operations systems that improve efficiency, tracking, and supply chain
-                            management.</p>
-                    </div>
                 </div>
             </div>
         </section>
