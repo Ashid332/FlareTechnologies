@@ -119,4 +119,154 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    /* =========================================================
+       Flare Technologies AI Sales Assistant Chatbot
+       ========================================================= */
+    class FlareChatbot {
+        constructor() {
+            this.launcher = document.getElementById('chatLauncher');
+            this.window = document.getElementById('chatWindow');
+            this.body = document.getElementById('chatBody');
+            this.optionsContainer = document.getElementById('chatOptions');
+            this.form = document.getElementById('chatForm');
+            this.input = document.getElementById('chatInput');
+            this.launcherIcon = this.launcher.querySelector('.launcher-icon');
+            this.closeIcon = this.launcher.querySelector('.close-icon');
+
+            this.isOpen = false;
+            this.init();
+        }
+
+        init() {
+            // Event Listeners
+            this.launcher.addEventListener('click', () => this.toggleChat());
+            this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+
+            // Setup Initial State
+            this.postBotMessage(`Hello! I'm the Flare assistant.<br>I can help you explore our AI automation, marketing systems, and development solutions.<br><br>What would you like to do today?`);
+            this.renderOptions([
+                { text: 'Explore Services', action: 'explore' },
+                { text: 'Learn About AI Automation', action: 'ai_auto' },
+                { text: 'Ask a Question', action: 'ask' },
+                { text: 'Book Consultation', action: 'book', style: 'action-btn' },
+                { text: 'Request Strategy Audit', action: 'audit', style: 'action-btn' }
+            ]);
+        }
+
+        toggleChat() {
+            this.isOpen = !this.isOpen;
+            if (this.isOpen) {
+                this.window.classList.remove('hidden');
+                this.launcherIcon.classList.add('hidden');
+                this.closeIcon.classList.remove('hidden');
+                setTimeout(() => this.input.focus(), 300);
+            } else {
+                this.window.classList.add('hidden');
+                this.launcherIcon.classList.remove('hidden');
+                this.closeIcon.classList.add('hidden');
+            }
+        }
+
+        postBotMessage(htmlContent) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'chat-msg bot';
+            msgDiv.innerHTML = htmlContent;
+            this.body.appendChild(msgDiv);
+            this.scrollToBottom();
+        }
+
+        postUserMessage(text) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'chat-msg user';
+            msgDiv.textContent = text;
+            this.body.appendChild(msgDiv);
+            this.scrollToBottom();
+        }
+
+        renderOptions(options) {
+            this.optionsContainer.innerHTML = '';
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = `chat-chip ${opt.style || ''}`;
+                btn.textContent = opt.text;
+                btn.onclick = () => this.handleOptionClick(opt);
+                this.optionsContainer.appendChild(btn);
+            });
+        }
+
+        scrollToBottom() {
+            this.body.scrollTop = this.body.scrollHeight;
+        }
+
+        handleSubmit(e) {
+            e.preventDefault();
+            const text = this.input.value.trim();
+            if (!text) return;
+
+            this.input.value = '';
+            this.postUserMessage(text);
+            this.processRouting(text);
+        }
+
+        handleOptionClick(opt) {
+            this.postUserMessage(opt.text);
+            if (opt.action === 'book' || opt.action === 'audit') {
+                this.triggerConversion(opt.action);
+                return;
+            }
+            this.processRouting(opt.text);
+        }
+
+        triggerConversion(type) {
+            this.optionsContainer.innerHTML = '';
+            setTimeout(() => {
+                if (type === 'book') {
+                    this.postBotMessage(`Excellent. You can schedule a consultation with our team to discuss your project in detail.<br><br><a href="#contact" class="chat-chip action-btn" style="display:inline-block; margin-top:10px; text-decoration:none;">Go to Contact Form</a>`);
+                } else {
+                    this.postBotMessage(`Great choice. We can run a strategy audit where we review your current systems and recommend improvements.<br><br><a href="#contact" class="chat-chip action-btn" style="display:inline-block; margin-top:10px; text-decoration:none;">Go to Contact Form</a>`);
+                }
+            }, 600);
+        }
+
+        processRouting(input) {
+            this.optionsContainer.innerHTML = ''; // Clear chips while 'thinking'
+            const lowerInput = input.toLowerCase();
+
+            setTimeout(() => {
+                let response = "";
+
+                if (lowerInput.includes('website') || lowerInput.includes('build') || lowerInput.includes('development')) {
+                    response = "Flare can help with that. We design and build modern websites and digital platforms while also supporting marketing and automation systems if needed.<br><br>Would you like to book a consultation to discuss your project, or request a strategy audit to evaluate your current digital setup?";
+                } else if (lowerInput.includes('marketing') || lowerInput.includes('seo') || lowerInput.includes('launch')) {
+                    response = "We specialize in Growth & Marketing Systems, including digital marketing strategies, influencer-led product launches, and e-commerce growth acceleration.<br><br>Would you like to book a consultation to discuss your project, or request a strategy audit?";
+                } else if (lowerInput.includes('ai') || lowerInput.includes('automation') || lowerInput.includes('operations')) {
+                    response = "Our AI & Automation Systems cover automation workflows, cloud infrastructure and migration, and custom operational logistics.<br><br>Would you like to book a consultation to discuss your project, or request a strategy audit to evaluate your current digital setup?";
+                } else if (lowerInput.includes('what do you do') || lowerInput.includes('services') || lowerInput.includes('explore') || lowerInput.includes('what does flare do')) {
+                    response = "Yes. Flare provides AI automation, marketing systems, development services, and cloud infrastructure. Our goal is to provide businesses with a complete ecosystem of solutions rather than isolated services.<br><br>How can we help you scale today?";
+                } else if (lowerInput.includes('book') || lowerInput.includes('consultation')) {
+                    this.triggerConversion('book');
+                    return;
+                } else if (lowerInput.includes('audit') || lowerInput.includes('strategy')) {
+                    this.triggerConversion('audit');
+                    return;
+                } else {
+                    response = "I may not have all the details on that, but our team would be happy to help. You can book a consultation to speak directly with a specialist.";
+                }
+
+                this.postBotMessage(response);
+                this.renderOptions([
+                    { text: 'Book Consultation', action: 'book', style: 'action-btn' },
+                    { text: 'Request Strategy Audit', action: 'audit', style: 'action-btn' },
+                    { text: 'Ask another question', action: 'ask' }
+                ]);
+
+            }, 800); // Simulated delay
+        }
+    }
+
+    // Initialize Chatbot when DOM loads
+    if (document.getElementById('flareChatbot')) {
+        new FlareChatbot();
+    }
+
 });

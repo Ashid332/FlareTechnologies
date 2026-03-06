@@ -632,6 +632,59 @@
         </div>
     </footer>
 
+    <!-- Floating AI Chatbot Widget -->
+    <div class="chat-widget" id="flareChatbot">
+        <!-- Chat Launcher Button -->
+        <button class="chat-launcher" id="chatLauncher" aria-label="Open AI Assistant">
+            <svg class="launcher-icon" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <svg class="close-icon hidden" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <path d="M18 6L6 18M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <!-- Chat Window -->
+        <div class="chat-window hidden" id="chatWindow">
+            <div class="chat-header">
+                <div>
+                    <h4 style="margin-bottom: 0.2rem; font-size: 1rem;">Flare Assistant</h4>
+                    <span style="font-size: 0.75rem; color: #00D4FF; display: flex; align-items: center; gap: 0.25rem;">
+                        <span
+                            style="width: 6px; height: 6px; background: #00D4FF; border-radius: 50%; display: inline-block; box-shadow: 0 0 5px #00D4FF;"></span>
+                        Online
+                    </span>
+                </div>
+            </div>
+
+            <!-- Chat Message History -->
+            <div class="chat-body" id="chatBody">
+                <!-- Welcome Message (Injected via JS) -->
+            </div>
+
+            <!-- Chat Option Chips -->
+            <div class="chat-options scroll-h" id="chatOptions">
+                <!-- Initial Options (Injected via JS) -->
+            </div>
+
+            <!-- User Text Input Area -->
+            <div class="chat-footer">
+                <form id="chatForm" class="chat-form">
+                    <input type="text" id="chatInput" placeholder="Type your message..." autocomplete="off">
+                    <button type="submit" class="chat-submit" aria-label="Send message">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script src="main.js"></script>
 </body>
 
