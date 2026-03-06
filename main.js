@@ -303,4 +303,24 @@ document.addEventListener('DOMContentLoaded', () => {
         new FlareChatbot();
     }
 
+    /* =========================================================
+       Chatbot Floating Trigger Logic
+       ========================================================= */
+    const chatbotTrigger = document.querySelector('.chatbot-trigger');
+    const chatbotWindow = document.querySelector('.chatbot-window');
+    const chatbotClose = document.querySelector('.chatbot-close');
+
+    if (chatbotTrigger && chatbotWindow && chatbotClose) {
+        chatbotTrigger.addEventListener('click', () => {
+            chatbotWindow.classList.add('active');
+            // Optional: focus input when opened
+            const chatInput = chatbotWindow.querySelector('.chat-input');
+            if (chatInput) chatInput.focus();
+        });
+
+        chatbotClose.addEventListener('click', () => {
+            chatbotWindow.classList.remove('active');
+        });
+    }
+
 });
