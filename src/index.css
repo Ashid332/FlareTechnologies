@@ -139,4 +139,10 @@
     background-size: 200% 200%;
     animation: gradient-shift 3s ease infinite;
   }
+
+  .hero-overlay {
+    background: linear-gradient(180deg,
+        rgba(6, 11, 23, 0.75),
+        rgba(6, 11, 23, 0.98));
+  }
 }

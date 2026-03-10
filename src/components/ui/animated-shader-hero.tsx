@@ -337,40 +337,51 @@ const Hero: React.FC<HeroProps> = ({
         style={{ background: 'black' }}
       />
 
+      {/* Dark Readability Overlay */}
+      <div className="absolute inset-0 z-[5] bg-[#060b17]/60 pointer-events-none" />
+
       {/* Hero Content Overlay */}
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-white">
         {/* Trust Badge */}
         {trustBadge && (
           <div className="mb-8 animate-fade-in-down">
-            <div className="flex items-center gap-2 px-6 py-3 bg-orange-500/10 backdrop-blur-md border border-orange-300/30 rounded-full text-sm">
+            <div className="flex items-center gap-2 px-6 py-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-full text-sm">
               {trustBadge.icons && (
                 <div className="flex">
                   {trustBadge.icons.map((icon, index) => (
-                    <span key={index} className={`text-${index === 0 ? 'yellow' : index === 1 ? 'orange' : 'amber'}-300`}>
+                    <span key={index} className="text-white/80">
                       {icon}
                     </span>
                   ))}
                 </div>
               )}
-              <span className="text-orange-100">{trustBadge.text}</span>
+              <span className="text-white/90 font-medium tracking-wide">{trustBadge.text}</span>
             </div>
           </div>
         )}
 
         <div className="text-center space-y-6 max-w-5xl mx-auto px-4">
           {/* Main Heading with Animation */}
-          <div className="space-y-2">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-orange-300 via-yellow-400 to-amber-300 bg-clip-text text-transparent animate-fade-in-up animation-delay-200">
+          <div className="space-y-4">
+            <h1
+              className="text-6xl md:text-8xl lg:text-9xl font-extrabold pb-2 animate-fade-in-up animation-delay-200 drop-shadow-[0_0_20px_rgba(0,0,0,0.8)]"
+              style={{
+                background: 'linear-gradient(90deg, #ff3b3b, #ff9f1c, #ffd60a, #2ec4b6, #00d4ff, #5a5aff, #a855f7)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundSize: '200% 200%',
+              }}
+            >
               {headline.line1}
             </h1>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-yellow-300 via-orange-400 to-red-400 bg-clip-text text-transparent animate-fade-in-up animation-delay-400">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight animate-fade-in-up animation-delay-400 drop-shadow-xl shadow-black">
               {headline.line2}
             </h1>
           </div>
 
           {/* Subtitle with Animation */}
           <div className="max-w-3xl mx-auto animate-fade-in-up animation-delay-600">
-            <p className="text-lg md:text-xl lg:text-2xl text-orange-100/90 font-light leading-relaxed">
+            <p className="text-lg md:text-xl lg:text-2xl text-blue-50 font-normal leading-relaxed drop-shadow-md">
               {subtitle}
             </p>
           </div>
@@ -381,7 +392,7 @@ const Hero: React.FC<HeroProps> = ({
               {buttons.primary && (
                 <button
                   onClick={buttons.primary.onClick}
-                  className="px-8 py-4 bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-black rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-orange-500/25"
+                  className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25"
                 >
                   {buttons.primary.text}
                 </button>
@@ -389,7 +400,7 @@ const Hero: React.FC<HeroProps> = ({
               {buttons.secondary && (
                 <button
                   onClick={buttons.secondary.onClick}
-                  className="px-8 py-4 bg-orange-500/10 hover:bg-orange-500/20 border border-orange-300/30 hover:border-orange-300/50 text-orange-100 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 backdrop-blur-sm"
+                  className="px-8 py-4 bg-blue-500/10 hover:bg-blue-500/20 border border-cyan-300/30 hover:border-cyan-300/50 text-cyan-100 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 backdrop-blur-sm"
                 >
                   {buttons.secondary.text}
                 </button>
@@ -466,7 +477,8 @@ void main(void) {
 		col+=.00125/d*(cos(sin(i)*vec3(1,2,3))+1.);
 		float b=noise(i+p+bg*1.731);
 		col+=.002*b/length(max(p,vec2(b*p.x*.02,p.y)));
-		col=mix(col,vec3(bg*.25,bg*.137,bg*.05),d);
+		vec3 base = vec3(0.04, 0.07, 0.14);
+    	col = mix(base, col, 0.85);
 	}
 	O=vec4(col,1);
 } `;
