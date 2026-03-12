@@ -16,7 +16,6 @@ import Methodology from "@/components/Methodology"
 import Results from "@/components/Results"
 import Contact from "@/components/Contact"
 import Footer from "@/components/Footer"
-import Chatbot from "@/components/Chatbot"
 
 function App() {
   const [isConsultationModalOpen, setConsultationModalOpen] = useState(false);
@@ -61,7 +60,6 @@ function App() {
       </main>
 
       <Footer />
-      <Chatbot />
 
       <ConsultationModal
         isOpen={isConsultationModalOpen}
