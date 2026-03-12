@@ -650,6 +650,82 @@
         </button>
     </div>
 
+    <!-- Consultation Modal -->
+    <div id="consultation-modal" class="consultation-modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content glass-panel scroll-anim scale-up">
+            <button class="modal-close" aria-label="Close Modal">&times;</button>
+            <div id="modal-form-view">
+                <h3 class="modal-title">Book a Consultation</h3>
+                <p class="modal-subtitle">Tell us about your systems, and our architects will design a blueprint for
+                    your growth.</p>
+
+                <form id="consultation-form" class="consultation-form">
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="c-name">Full Name *</label>
+                            <input type="text" id="c-name" name="name" required placeholder="John Doe">
+                        </div>
+                        <div class="input-group">
+                            <label for="c-email">Work Email *</label>
+                            <input type="email" id="c-email" name="email" required placeholder="john@company.com">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="c-phone">Phone Number</label>
+                            <input type="tel" id="c-phone" name="phone" placeholder="+1 (555) 000-0000">
+                        </div>
+                        <div class="input-group">
+                            <label for="c-company">Company</label>
+                            <input type="text" id="c-company" name="company" placeholder="Acme Corp">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="c-service">Primary Interest *</label>
+                        <select id="c-service" name="service" required>
+                            <option value="" disabled selected>Select a Service Area</option>
+                            <option value="AI & Automation">AI & Automation</option>
+                            <option value="Growth & Marketing">Growth & Marketing</option>
+                            <option value="Cloud Infrastructure">Cloud Infrastructure</option>
+                            <option value="Full Ecosystem Build">Full Ecosystem Build</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="c-goal">Primary Goal or Challenge *</label>
+                        <textarea id="c-goal" name="goal" rows="4" required
+                            placeholder="E.g., We need to automate our logistics pipeline to reduce 40 hours of manual data entry a week..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full modal-submit-btn">
+                        <span class="btn-text">Submit Request</span>
+                        <div class="btn-loader hidden"></div>
+                    </button>
+                    <p class="form-error-msg hidden">Please fill in all required fields.</p>
+                </form>
+            </div>
+
+            <div id="modal-success-view" class="hidden text-center">
+                <div class="success-icon">
+                    <svg viewBox="0 0 24 24" width="64" height="64" stroke="currentColor" stroke-width="2" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"
+                        style="color: #00D4FF; margin: 0 auto 1.5rem;">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                </div>
+                <h3 class="modal-title">You're All Set! 🎉</h3>
+                <p id="success-message-text" class="modal-subtitle"
+                    style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">Thanks! Our team will review your
+                    request and contact you within 24 hours.</p>
+                <button class="btn btn-secondary btn-full btn-close-success">Return to Website</button>
+            </div>
+        </div>
+    </div>
+
     <script src="main.js"></script>
 </body>
 

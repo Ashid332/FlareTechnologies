@@ -302,4 +302,103 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    /* =========================================================
+       Consultation Modal Logic
+       ========================================================= */
+    const consultationModal = document.getElementById('consultation-modal');
+    const modalCloseBtn = document.querySelector('.modal-close');
+    const modalOverlay = document.querySelector('.modal-overlay');
+    const modalFormView = document.getElementById('modal-form-view');
+    const modalSuccessView = document.getElementById('modal-success-view');
+    const consultationForm = document.getElementById('consultation-form');
+    const formErrorMsg = document.querySelector('.form-error-msg');
+    const submitBtnLoader = document.querySelector('.btn-loader');
+    const submitBtnText = document.querySelector('.btn-text');
+    const btnCloseSuccess = document.querySelector('.btn-close-success');
+    const successMessageText = document.getElementById('success-message-text');
+
+    // Find all active CTA links
+    const ctaLinks = document.querySelectorAll('a[href="#contact"]');
+
+    function openModal(e) {
+        if (e) e.preventDefault();
+        consultationModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        consultationModal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+
+        // Reset state after closing animation
+        setTimeout(() => {
+            modalFormView.classList.remove('hidden');
+            modalSuccessView.classList.add('hidden');
+            consultationForm.reset();
+            formErrorMsg.classList.add('hidden');
+        }, 400);
+    }
+
+    // Bind Opens
+    ctaLinks.forEach(link => link.addEventListener('click', openModal));
+
+    // Bind Closes
+    if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+    if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
+    if (btnCloseSuccess) btnCloseSuccess.addEventListener('click', closeModal);
+
+    // Handle Form Submission
+    if (consultationForm) {
+        consultationForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Validate basic required fields are not empty strings
+            const formData = new FormData(consultationForm);
+            const data = Object.fromEntries(formData.entries());
+
+            if (!data.name || !data.email || !data.service || !data.goal) {
+                formErrorMsg.textContent = "Please fill in all required fields.";
+                formErrorMsg.classList.remove('hidden');
+                return;
+            }
+
+            formErrorMsg.classList.add('hidden');
+            submitBtnText.textContent = "Sending...";
+            submitBtnLoader.classList.remove('hidden');
+
+            try {
+                const response = await fetch('/api/book-consultation', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Server encountered an issue.');
+                }
+
+                // Success!
+                submitBtnText.textContent = "Submit Request";
+                submitBtnLoader.classList.add('hidden');
+
+                // Swap purely the views
+                modalFormView.classList.add('hidden');
+                modalSuccessView.classList.remove('hidden');
+
+                // Update specific name placeholder logic
+                const firstName = data.name.split(' ')[0] || data.name;
+                successMessageText.textContent = `Thanks ${firstName}! Our team will review your request and contact you within 24 hours.`;
+
+            } catch (err) {
+                console.error('Submission failed:', err);
+                submitBtnText.textContent = "Submit Request";
+                submitBtnLoader.classList.add('hidden');
+                formErrorMsg.textContent = "Oops! Something went wrong on our end. Please try again or email us directly at consult@flaretechnologies.in.";
+                formErrorMsg.classList.remove('hidden');
+            }
+        });
+    }
+
 });

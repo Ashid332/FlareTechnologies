@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 
 // Types for component props
 interface HeroProps {
@@ -28,7 +28,7 @@ interface HeroProps {
 // Reusable Shader Background Hook
 const useShaderBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationFrameRef = useRef<number>();
+  const animationFrameRef = useRef<number>(0);
   const rendererRef = useRef<WebGLRenderer | null>(null);
   const pointersRef = useRef<PointerHandler | null>(null);
 
@@ -40,7 +40,6 @@ const useShaderBackground = () => {
     private vs: WebGLShader | null = null;
     private fs: WebGLShader | null = null;
     private buffer: WebGLBuffer | null = null;
-    private scale: number;
     private shaderSource: string;
     private mouseMove = [0, 0];
     private mouseCoords = [0, 0];
@@ -56,7 +55,6 @@ void main(){gl_Position=position;}`;
 
     constructor(canvas: HTMLCanvasElement, scale: number) {
       this.canvas = canvas;
-      this.scale = scale;
       this.gl = canvas.getContext('webgl2')!;
       this.gl.viewport(0, 0, canvas.width * scale, canvas.height * scale);
       this.shaderSource = defaultShaderSource;
@@ -86,7 +84,6 @@ void main(){gl_Position=position;}`;
     }
 
     updateScale(scale: number) {
-      this.scale = scale;
       this.gl.viewport(0, 0, this.canvas.width * scale, this.canvas.height * scale);
     }
 
@@ -179,8 +176,8 @@ void main(){gl_Position=position;}`;
 
       gl.uniform2f((program as any).resolution, this.canvas.width, this.canvas.height);
       gl.uniform1f((program as any).time, now * 1e-3);
-      gl.uniform2f((program as any).move, ...this.mouseMove);
-      gl.uniform2f((program as any).touch, ...this.mouseCoords);
+      gl.uniform2f((program as any).move, this.mouseMove[0], this.mouseMove[1]);
+      gl.uniform2f((program as any).touch, this.mouseCoords[0], this.mouseCoords[1]);
       gl.uniform1i((program as any).pointerCount, this.nbrOfPointers);
       gl.uniform2fv((program as any).pointers, this.pointerCoords);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
